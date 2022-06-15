@@ -3,12 +3,16 @@ const app = express()
 const cors = require('cors');
 const admin = require("firebase-admin");
 
+
+const bcrypt = require('bcrypt-nodejs');
+
 require('dotenv').config();
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const port = process.env.PORT || 5000;
 
 // firebase ar admin sdk arsathe connection set
 const serviceAccount = require('./school-management-firebase-adminsdk.json');
+// const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
