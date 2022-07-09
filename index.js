@@ -155,9 +155,14 @@ async function run() {
             // console.log(studentInfo);
             res.json(studentInfo);
         })
-
-
         app.post('/studentInfo', async (req, res) => {
+            const studentSubmit = req.body;
+            const result = await studentInfoCollection.insertOne(studentSubmit);
+            // console.log(result);
+            res.json(result)
+        });
+
+        app.post('/class7StudentInfo', async (req, res) => {
             const studentSubmit = req.body;
             const result = await studentInfoCollection.insertOne(studentSubmit);
             // console.log(result);
@@ -177,7 +182,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get('/', (req, res) => {
-    res.send('Hello Our Online School!');
+    res.send('Hello from Leading Light School & College!');
 })
 
 app.listen(port, () => {
