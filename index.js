@@ -49,6 +49,7 @@ async function run() {
         const database = client.db('school');
         const usersCollection = database.collection('users');
         const studentInfoCollection = database.collection('studentInfo');
+        const classSevenStudentCollection = database.collection('classSevenStudent');
 
         app.post('/users', async (req, res) => {
             const user = req.body;
@@ -162,10 +163,21 @@ async function run() {
             res.json(result)
         });
 
-        app.post('/class7StudentInfo', async (req, res) => {
+        app.get('/classSevenStudent', async (req, res) => {
+
+            // const email = req.query.email;
+            // const query = { email: email }
+            // console.log(query);
+            const cursor = classSevenStudentCollection.find({});
+            const studentInfo = await cursor.toArray();
+            console.log(studentInfo);
+            res.json(studentInfo);
+        })
+
+        app.post('/classSevenStudent', async (req, res) => {
             const studentSubmit = req.body;
-            const result = await studentInfoCollection.insertOne(studentSubmit);
-            // console.log(result);
+            const result = await classSevenStudentCollection.insertOne(studentSubmit);
+            console.log(result);
             res.json(result)
         });
 
