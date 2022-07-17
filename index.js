@@ -166,18 +166,8 @@ const attendanceCollection = database.collection('attendance');
         app.get('/classSevenStudent', async (req, res) => {
 
             
-            const filter = { email: user.email };
-            const options = { upsert: true };
-            const updateDoc = { $set: user };
-            const result = await classSevenStudentCollection.updateOne(filter, updateDoc, options);
-            res.json(result);
-            // const email = req.query.email;
-            // const query = { email: email }
-            // console.log(query);
-            // const cursor = classSevenStudentCollection.find({});
-            // const studentInfo = await cursor.toArray();
-            // console.log(studentInfo);
-            // res.json(studentInfo);
+            const cursor = await classSevenStudentCollection.find({}).toArray();
+            res.json(cursor);
         })
         // app.get('/classSevenStudent', async (req, res) => {
 
