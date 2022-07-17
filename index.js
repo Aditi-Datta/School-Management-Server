@@ -180,7 +180,6 @@ async function run() {
         //     console.log(studentInfo);
         //     res.json(studentInfo);
         // })
-
         app.post('/banglaAttendance', async(req,res) => {
             const data = req.body;
             const store = await attendanceCollection.insertMany(data);
