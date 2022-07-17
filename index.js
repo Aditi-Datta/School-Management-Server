@@ -50,7 +50,7 @@ async function run() {
         const usersCollection = database.collection('users');
         const studentInfoCollection = database.collection('studentInfo');
         const classSevenStudentCollection = database.collection('classSevenStudent');
-
+const attendanceCollection = database.collection('attendance');
         app.post('/users', async (req, res) => {
             const user = req.body;
             const result = await usersCollection.insertOne(user);
@@ -165,18 +165,45 @@ async function run() {
 
         app.get('/classSevenStudent', async (req, res) => {
 
+            
+            const filter = { email: user.email };
+            const options = { upsert: true };
+            const updateDoc = { $set: user };
+            const result = await classSevenStudentCollection.updateOne(filter, updateDoc, options);
+            res.json(result);
             // const email = req.query.email;
             // const query = { email: email }
             // console.log(query);
-            const cursor = classSevenStudentCollection.find({});
-            const studentInfo = await cursor.toArray();
-            console.log(studentInfo);
-            res.json(studentInfo);
+            // const cursor = classSevenStudentCollection.find({});
+            // const studentInfo = await cursor.toArray();
+            // console.log(studentInfo);
+            // res.json(studentInfo);
         })
+        // app.get('/classSevenStudent', async (req, res) => {
+
+            
+        //     // const email = req.query.email;
+        //     // const query = { email: email }
+        //     // console.log(query);
+        //     const cursor = classSevenStudentCollection.find({});
+        //     const studentInfo = await cursor.toArray();
+        //     console.log(studentInfo);
+        //     res.json(studentInfo);
+        // })
+
+app.post('/banglaAttendance', async(req,res) => {
+
+});
 
         app.post('/classSevenStudent', async (req, res) => {
+            let {email}=req.body;
+            const student = await classSevenStudentCollection.find({email}).toArray();      
+            if(student.length>0){
+                res.json({status:0, message:'student already exit'})
+                return
+            }
             const studentSubmit = req.body;
-            const result = await classSevenStudentCollection.insertOne(studentSubmit);
+            const result = await classSevenStudentCollection.insertOne({...studentSubmit, email:studentSubmit.email.toLowerCase()});
             console.log(result);
             res.json(result)
         });
