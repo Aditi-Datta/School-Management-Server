@@ -50,7 +50,7 @@ async function run() {
         const usersCollection = database.collection('users');
         const studentInfoCollection = database.collection('studentInfo');
         const classSevenStudentCollection = database.collection('classSevenStudent');
-const attendanceCollection = database.collection('attendance');
+        const attendanceCollection = database.collection('attendance');
         app.post('/users', async (req, res) => {
             const user = req.body;
             const result = await usersCollection.insertOne(user);
@@ -181,9 +181,11 @@ const attendanceCollection = database.collection('attendance');
         //     res.json(studentInfo);
         // })
 
-app.post('/banglaAttendance', async(req,res) => {
-
-});
+        app.post('/banglaAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await attendanceCollection.insertOne(data);
+            res.json(store) 
+        });
 
         app.post('/classSevenStudent', async (req, res) => {
             let {email}=req.body;
