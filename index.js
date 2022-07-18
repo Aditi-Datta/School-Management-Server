@@ -157,7 +157,7 @@ async function run() {
         })
         app.post('/studentInfo', async (req, res) => {
             const studentSubmit = req.body;
-            const result = await studentInfoCollection.insertOne(studentSubmit);
+            const result = await studentInfoCollection.insertMany(studentSubmit);
             // console.log(result);
             res.json(result)
         });
