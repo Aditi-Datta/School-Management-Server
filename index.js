@@ -120,7 +120,6 @@ async function run() {
             res.json(result);
         })
 
-
         // app.get('/studentInfo', async (req, res) => {
 
         //     const studentId = req.query.studentId;
