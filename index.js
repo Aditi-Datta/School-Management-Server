@@ -169,7 +169,7 @@ async function run() {
 
         app.post('/banglaAttendance', async(req,res) => {
             const data = req.body;
-            const store = await attendanceCollection.insertOne(data);
+            const store = await attendanceCollection.insertMany(data);
             res.json(store);
         });
         app.get('/banglaAttendance', async(req,res) => {
