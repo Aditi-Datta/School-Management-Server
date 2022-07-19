@@ -176,7 +176,6 @@ async function run() {
             const store = await attendanceCollection.find({}).toArray();
             res.json(store) 
         });
-
         app.post('/classSevenStudent', async (req, res) => {
             let {email}=req.body;
             const student = await classSevenStudentCollection.find({email}).toArray();      
