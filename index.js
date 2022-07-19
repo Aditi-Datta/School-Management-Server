@@ -157,31 +157,23 @@ async function run() {
         })
         app.post('/studentInfo', async (req, res) => {
             const studentSubmit = req.body;
-            const result = await studentInfoCollection.insertMany(studentSubmit);
+            const result = await studentInfoCollection.insertOne(studentSubmit);
             // console.log(result);
             res.json(result)
         });
-
-        app.get('/classSevenStudent', async (req, res) => {
-
-            
+        app.get('/classSevenStudent', async (req, res) => {       
             const cursor = await classSevenStudentCollection.find({}).toArray();
             res.json(cursor);
         })
-        // app.get('/classSevenStudent', async (req, res) => {
 
-            
-        //     // const email = req.query.email;
-        //     // const query = { email: email }
-        //     // console.log(query);
-        //     const cursor = classSevenStudentCollection.find({});
-        //     const studentInfo = await cursor.toArray();
-        //     console.log(studentInfo);
-        //     res.json(studentInfo);
-        // })
+
         app.post('/banglaAttendance', async(req,res) => {
             const data = req.body;
-            const store = await attendanceCollection.insertOne(data);
+            const store = await attendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.get('/banglaAttendance', async(req,res) => {
+            const store = await attendanceCollection.find({}).toArray();
             res.json(store) 
         });
 
