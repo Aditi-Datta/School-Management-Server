@@ -69,6 +69,11 @@ async function run() {
             res.json(result);
         });
 
+        app.get('/users', async(req,res) => {
+            const users = await usersCollection.find().toArray();
+            res.send(users);
+        });
+
         app.get('/users/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email: email };
