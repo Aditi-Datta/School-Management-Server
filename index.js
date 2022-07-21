@@ -193,8 +193,6 @@ async function run() {
             console.log(result);
             res.json(result)
         });
-
-
         /*  const courseCollection = database.collection('cource');
          app.post('/appointments', async (req, res) => {
  
