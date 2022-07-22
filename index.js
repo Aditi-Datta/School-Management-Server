@@ -51,6 +51,8 @@ async function run() {
         const studentInfoCollection = database.collection('studentInfo');
         const classSevenStudentCollection = database.collection('classSevenStudent');
         const attendanceCollection = database.collection('attendance');
+        const contactUsCollection = database.collection('review');
+
         app.post('/users', async (req, res) => {
             const user = req.body;
             const result = await usersCollection.insertOne(user);
@@ -189,6 +191,11 @@ async function run() {
         app.post('/banglaAttendance', async(req,res) => {
             const data = req.body;
             const store = await attendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/contactUs', async(req,res) => {
+            const data = req.body;
+            const store = await contactUsCollection.insertOne(data);
             res.json(store);
         });
         // app.get('/banglaAttendance', async(req,res) => {
