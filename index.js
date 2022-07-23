@@ -127,12 +127,12 @@ async function run() {
             res.json({ teacher: isTeacher });
         });
 
-        app.get('/banglaAttendance', async(req,res) => {
-            const total = req.params;
-            const query = {total};
-            const store = await attendanceCollection.findOne(query);
-            res.json(store) 
-        });
+        // app.get('/banglaAttendance', async(req,res) => {
+        //     const total = req.params;
+        //     const query = {total};
+        //     const store = await attendanceCollection.findOne(query);
+        //     res.json(store) 
+        // });
 
         app.put('/users/addTeacher', async (req, res) => {
             const user = req.body;
