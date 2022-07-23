@@ -198,10 +198,10 @@ async function run() {
             const store = await contactUsCollection.insertOne(data);
             res.json(store);
         });
-        // app.get('/banglaAttendance', async(req,res) => {
-        //     const store = await attendanceCollection.find({});
-        //     res.json(store) 
-        // });
+        app.get('/banglaAttendance', async(req,res) => {
+            const store = await attendanceCollection.find({});
+            res.json(store) 
+        });
         app.post('/classSevenStudent', async (req, res) => {
             let {email}=req.body;
             const student = await classSevenStudentCollection.find({email}).toArray();      
