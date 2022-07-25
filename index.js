@@ -198,7 +198,7 @@ async function run() {
             const store = await contactUsCollection.insertOne(data);
             res.json(store);
         });
-        app.post('/resultSubmit', async(req,res) => {
+        app.post('/result', async(req,res) => {
             const data = req.body;
             const store = await resultSubmitCollection.insertMany(data);
             res.json(store);
