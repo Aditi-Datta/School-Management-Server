@@ -166,8 +166,6 @@ async function run() {
         //     console.log(studentInfo);
         //     res.json(studentInfo);
         // })
-
-
         app.get('/studentInfo', async (req, res) => {
 
             // const email = req.query.email;
