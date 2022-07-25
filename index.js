@@ -198,7 +198,7 @@ async function run() {
         });
         app.post('/result', async(req,res) => {
             const data = req.body;
-            const store = await resultSubmitCollection.insertMany(data);
+            const store = await resultSubmitCollection.insertOne(data);
             res.json(store);
         });
         app.get('/banglaAttendance', async(req,res) => {
