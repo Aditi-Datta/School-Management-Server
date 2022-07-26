@@ -212,8 +212,7 @@ async function run() {
 
             const store = await resultSubmitCollection.findOne(query);
             res.json(store) 
-        });
-           
+        }); 
         app.get('/banglaAttendance', async(req,res) => {
             const store = await attendanceCollection.find({});
             res.json(store) 
