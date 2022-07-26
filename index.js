@@ -213,8 +213,6 @@ async function run() {
             const store = await resultSubmitCollection.findOne(query);
             res.json(store) 
         });
-
-
            
 
         app.get('/banglaAttendance', async(req,res) => {
