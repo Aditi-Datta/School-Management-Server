@@ -214,7 +214,6 @@ async function run() {
             res.json(store) 
         });
            
-
         app.get('/banglaAttendance', async(req,res) => {
             const store = await attendanceCollection.find({});
             res.json(store) 
