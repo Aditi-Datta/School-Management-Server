@@ -203,9 +203,14 @@ async function run() {
             res.json(store);
         });
         app.get('/result/:studentId', async(req,res) => {
-            const store = await resultSubmitCollection.find({});
+            const query = { studentId: studentId};
+            const store = await resultSubmitCollection.find(query);
             res.json(store) 
         });
+
+
+
+
         app.get('/banglaAttendance', async(req,res) => {
             const store = await attendanceCollection.find({});
             res.json(store) 
