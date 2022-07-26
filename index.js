@@ -202,6 +202,7 @@ async function run() {
             res.json(store);
         });
         app.get('/result/:studentId', async(req,res) => {
+            const studentId = req.query.studentId;
             const query = { studentId: studentId};
             const store = await resultSubmitCollection.find(query);
 
