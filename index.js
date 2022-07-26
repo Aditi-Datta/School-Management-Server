@@ -203,7 +203,7 @@ async function run() {
             const store = await resultSubmitCollection.insertOne(data);
             res.json(store);
         });
-        app.get('/result', async(req,res) => {
+        app.get('/result/:studentId', async(req,res) => {
             const store = await resultSubmitCollection.find({});
             res.json(store) 
         });
