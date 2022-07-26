@@ -191,15 +191,21 @@ async function run() {
             const store = await attendanceCollection.insertMany(data);
             res.json(store);
         });
+
         app.post('/contactUs', async(req,res) => {
             const data = req.body;
             const store = await contactUsCollection.insertOne(data);
             res.json(store);
         });
+
         app.post('/result', async(req,res) => {
             const data = req.body;
             const store = await resultSubmitCollection.insertOne(data);
             res.json(store);
+        });
+        app.get('/result', async(req,res) => {
+            const store = await resultSubmitCollection.find({});
+            res.json(store) 
         });
         app.get('/banglaAttendance', async(req,res) => {
             const store = await attendanceCollection.find({});
