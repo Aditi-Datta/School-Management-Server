@@ -201,16 +201,21 @@ async function run() {
             const store = await resultSubmitCollection.insertOne(data);
             res.json(store);
         });
-        app.get('/result', async(req,res) => {
-            // const studentId = req.query.studentId;
-          
-            const store = await resultSubmitCollection.find({}).toArray();
+        // app.get('/result', async(req,res) => {
+        //     // const studentId = req.query.studentId;
+        //     const store = await resultSubmitCollection.find({}).toArray();
+        //     res.json(store) 
+        // });
+        app.get('/result/:studentId', async(req,res) => {
+            const studentId = req.params.studentId;
+            const query = { studentId: studentId };
 
+            const store = await resultSubmitCollection.findOne(query);
             res.json(store) 
         });
 
 
-
+           
 
         app.get('/banglaAttendance', async(req,res) => {
             const store = await attendanceCollection.find({});
