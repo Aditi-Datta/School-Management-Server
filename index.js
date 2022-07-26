@@ -75,7 +75,6 @@ async function run() {
             const users = await usersCollection.find().toArray();
             res.send(users);
         });
-
         app.get('/users/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email: email };
@@ -205,6 +204,7 @@ async function run() {
         app.get('/result/:studentId', async(req,res) => {
             const query = { studentId: studentId};
             const store = await resultSubmitCollection.find(query);
+
             res.json(store) 
         });
 
