@@ -88,7 +88,8 @@ async function run() {
 
         app.put('/users/admin',verifyToken, async (req, res) => {     
            const email = req.params.email;
-             const filter = { email: email };
+             const filter = { email: user.email };
+
              console.log(filter);   
              const updateDoc = { $set: { role: 'admin' } };
              const result = await usersCollection.updateOne(filter, updateDoc);
