@@ -71,7 +71,7 @@ async function run() {
             res.json(result);
         });
 
-        app.get('/users',verifyToken, async(req,res) => {
+        app.get('/users', async(req,res) => {
             const users = await usersCollection.find().toArray();
             res.send(users);
         });
@@ -96,7 +96,7 @@ async function run() {
         // });
 
         app.put('/users/admin', verifyToken, async (req, res) => {
-            const user = req.body;
+            // const user = req.body;
             const requester = req.decodedEmail;
             if (requester) {
                 const requesterAccount = await usersCollection.findOne({ email: requester });
