@@ -85,7 +85,7 @@ async function run() {
             }
             res.json({ admin: isAdmin });
         })
-        app.put('/users/admin/:email',verifyToken, async (req, res) => {     
+        app.put('/users/admin',verifyToken, async (req, res) => {     
              const email = req.params.email;
              const filter = { email: email };
 
