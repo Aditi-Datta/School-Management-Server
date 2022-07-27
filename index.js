@@ -87,8 +87,8 @@ async function run() {
         })
 
         app.put('/users/admin',verifyToken, async (req, res) => {     
-           const email = req.params.email;
-             const filter = { email: user.email };
+             const email = req.params.email;
+             const filter = { email: email };
 
              console.log(filter);   
              const updateDoc = { $set: { role: 'admin' } };
