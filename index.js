@@ -70,6 +70,7 @@ async function run() {
             const result = await usersCollection.updateOne(filter, updateDoc, options);
             res.json(result);
         });
+        
         app.get('/users', async(req,res) => {
             const users = await usersCollection.find().toArray();
             res.send(users);
