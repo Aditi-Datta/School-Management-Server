@@ -70,7 +70,7 @@ async function run() {
             const result = await usersCollection.updateOne(filter, updateDoc, options);
             res.json(result);
         });
-        
+
         app.get('/users', async(req,res) => {
             const users = await usersCollection.find().toArray();
             res.send(users);
@@ -201,15 +201,27 @@ async function run() {
             const store = await resultSubmitCollection.insertOne(data);
             res.json(store);
         });
+
         // app.get('/result', async(req,res) => {
         //     // const studentId = req.query.studentId;
         //     const store = await resultSubmitCollection.find({}).toArray();
         //     res.json(store) 
         // });
+
+    //     app.put('/users/admin/:email',verifyToken, async (req, res) => {     
+    //         const email = req.params.email;
+    //         const filter = { email: email };
+
+    //         console.log(filter);   
+    //         const updateDoc = { $set: { role: 'admin' } };
+    //         const result = await usersCollection.updateOne(filter, updateDoc);
+    //         res.json(result);         
+    //    });
+
         app.get('/result/:studentId', async(req,res) => {
             const studentId = req.params.studentId;
             const query = { studentId: studentId };
-
+            console.log(query); 
             const store = await resultSubmitCollection.findOne(query);
             res.json(store) 
         }); 
