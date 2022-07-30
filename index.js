@@ -190,7 +190,6 @@ async function run() {
             const store = await attendanceCollection.insertMany(data);
             res.json(store);
         });
-
         app.post('/contactUs', async(req,res) => {
             const data = req.body;
             const store = await contactUsCollection.insertOne(data);
