@@ -4,6 +4,7 @@ const cors = require('cors');
 const admin = require("firebase-admin");
 
 
+
 const bcrypt = require('bcrypt-nodejs');
 
 require('dotenv').config();
@@ -48,9 +49,9 @@ async function run() {
         console.log("DB connected Successfully");
         const database = client.db('school');
         const usersCollection = database.collection('users');
-        const studentInfoCollection = database.collection('studentInfo');
+        // const studentInfoCollection = database.collection('studentInfo');
         const classSevenStudentCollection = database.collection('classSevenStudent');
-        const attendanceCollection = database.collection('attendance');
+        const banglaAttendanceCollection = database.collection('sevenBangla');
         const contactUsCollection = database.collection('review');
         const resultSubmitCollection = database.collection('result');
 
@@ -165,29 +166,29 @@ async function run() {
         //     console.log(studentInfo);
         //     res.json(studentInfo);
         // })
-        app.get('/studentInfo', async (req, res) => {
+        // app.get('/studentInfo', async (req, res) => {
 
-            // const email = req.query.email;
-            // const query = { email: email }
-            // console.log(query);
-            const cursor = studentInfoCollection.find({});
-            const studentInfo = await cursor.toArray();
-            // console.log(studentInfo);
-            res.json(studentInfo);
-        })
-        app.post('/studentInfo', async (req, res) => {
-            const studentSubmit = req.body;
-            const result = await studentInfoCollection.insertOne(studentSubmit);
-            // console.log(result);
-            res.json(result)
-        });
+        //     // const email = req.query.email;
+        //     // const query = { email: email }
+        //     // console.log(query);
+        //     const cursor = studentInfoCollection.find({});
+        //     const studentInfo = await cursor.toArray();
+        //     // console.log(studentInfo);
+        //     res.json(studentInfo);
+        // })
+        // app.post('/studentInfo', async (req, res) => {
+        //     const studentSubmit = req.body;
+        //     const result = await studentInfoCollection.insertOne(studentSubmit);
+        //     // console.log(result);
+        //     res.json(result)
+        // });
         app.get('/classSevenStudent', async (req, res) => {       
             const cursor = await classSevenStudentCollection.find({}).toArray();
             res.json(cursor);
         })
         app.post('/banglaAttendance', async(req,res) => {
             const data = req.body;
-            const store = await attendanceCollection.insertMany(data);
+            const store = await banglaAttendanceCollection.insertMany(data);
             res.json(store);
         });
         app.post('/contactUs', async(req,res) => {
