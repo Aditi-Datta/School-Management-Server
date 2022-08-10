@@ -186,12 +186,12 @@ async function run() {
             const cursor = await classSevenStudentCollection.find({}).toArray();
             res.json(cursor);
         })
-        app.post('/bangla7Attendance', async(req,res) => {
+        app.post('/banglaSevenAttendance', async(req,res) => {
             const data = req.body;
             const store = await sevenBanglaAttendanceCollection.insertMany(data);
             res.json(store);
         });
-        app.post('english7Attendance', async(req,res) => {
+        app.post('englishSevenAttendance', async(req,res) => {
             const data = req.body;
             const store = await sevenEnglishAttendanceCollection.insertMany(data);
             res.json(store);
