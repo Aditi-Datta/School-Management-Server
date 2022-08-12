@@ -189,7 +189,6 @@ async function run() {
             const store = await sevenBanglaAttendanceCollection.insertMany(data);
             res.json(store);
         });
-        
         app.post('englishSevenAttendance', async(req,res) => {
             const data = req.body;
             const store = await sevenEnglishAttendanceCollection.insertMany(data);
