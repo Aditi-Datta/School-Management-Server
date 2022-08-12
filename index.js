@@ -133,7 +133,6 @@ async function run() {
         //     const store = await attendanceCollection.findOne(query);
         //     res.json(store) 
         // });
-
         app.put('/users/addTeacher', async (req, res) => {
             const user = req.body;
             // console.log('put', user);
