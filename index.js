@@ -271,7 +271,7 @@ async function run() {
             res.json(result)
         });
         app.get('/classEightStudent', async (req, res) => {       
-            const cursor = await classSevenStudentCollection.find({}).toArray();
+            const cursor = await classEightStudentCollection.find({}).toArray();
             res.json(cursor);
         })
         app.post('/banglaEightAttendance', async(req,res) => {
