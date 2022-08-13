@@ -53,6 +53,7 @@ async function run() {
         const classSevenStudentCollection = database.collection('classSevenStudent');
         const sevenBanglaAttendanceCollection = database.collection('sevenBangla');
         const sevenEnglishAttendanceCollection = database.collection('sevenEnglish');
+        const sevenMathAttendanceCollection = database.collection('sevenMath');
         const contactUsCollection = database.collection('review');
         const resultSubmitCollection = database.collection('result');
 
@@ -192,6 +193,11 @@ async function run() {
         app.post('/englishSevenAttendance', async(req,res) => {
             const data = req.body;
             const store = await sevenEnglishAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/mathSevenAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await sevenMathAttendanceCollection.insertMany(data);
             res.json(store);
         });
         app.post('/contactUs', async(req,res) => {
