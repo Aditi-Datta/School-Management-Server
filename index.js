@@ -62,6 +62,8 @@ async function run() {
 
         const classEightStudentCollection = database.collection('classEightStudent');
 
+        const classNineStudentCollection = database.collection('classNineStudent');
+
 
         const contactUsCollection = database.collection('review');
         const resultSubmitCollection = database.collection('result');
@@ -265,7 +267,18 @@ async function run() {
             res.json(result)
         });
 
-
+        app.post('/classNineStudent', async (req, res) => {
+            let {email}=req.body;
+            const student = await classNineStudentCollection.find({email}).toArray();      
+            if(student.length>0){
+                res.json({status:0, message:'student already exit'})
+                return
+            }
+            const studentSubmit = req.body;
+            const result = await classNineStudentCollection.insertOne({...studentSubmit, email:studentSubmit.email.toLowerCase()});
+            console.log(result);
+            res.json(result)
+        });
 
 
 
