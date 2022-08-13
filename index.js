@@ -51,6 +51,8 @@ async function run() {
         const usersCollection = database.collection('users');
         // const studentInfoCollection = database.collection('studentInfo');
 
+        const classSixStudentCollection = database.collection('classSixStudent');
+
         const classSevenStudentCollection = database.collection('classSevenStudent');
         const sevenBanglaAttendanceCollection = database.collection('sevenBangla');
         const sevenEnglishAttendanceCollection = database.collection('sevenEnglish');
@@ -188,6 +190,21 @@ async function run() {
         //     // console.log(result);
         //     res.json(result)
         // });
+
+        app.post('/classSixStudent', async (req, res) => {
+            let {email}=req.body;
+            const student = await classSixStudentCollection.find({email}).toArray();      
+            if(student.length>0){
+                res.json({status:0, message:'student already exit'})
+                return
+            }
+            const studentSubmit = req.body;
+            const result = await classSixStudentCollection.insertOne({...studentSubmit, email:studentSubmit.email.toLowerCase()});
+            console.log(result);
+            res.json(result)
+        });
+
+
 
 
         app.post('/classSevenStudent', async (req, res) => {
