@@ -61,6 +61,8 @@ async function run() {
         const sevenSociologyAttendanceCollection = database.collection('sevenSociology');
 
         const classEightStudentCollection = database.collection('classEightStudent');
+        const eightBanglaAttendanceCollection = database.collection('eightBangla');
+
 
         const classNineStudentCollection = database.collection('classNineStudent');
 
@@ -268,6 +270,19 @@ async function run() {
             console.log(result);
             res.json(result)
         });
+        app.get('/classEightStudent', async (req, res) => {       
+            const cursor = await classSevenStudentCollection.find({}).toArray();
+            res.json(cursor);
+        })
+        app.post('/banglaEightAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await eightBanglaAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+
+
+
+
 
         app.post('/classNineStudent', async (req, res) => {
             let {email}=req.body;
