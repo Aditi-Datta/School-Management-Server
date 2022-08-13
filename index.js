@@ -55,6 +55,7 @@ async function run() {
         const sevenEnglishAttendanceCollection = database.collection('sevenEnglish');
         const sevenMathAttendanceCollection = database.collection('sevenMath');
         const sevenScienceAttendanceCollection = database.collection('sevenScience');
+        const sevenSociologyAttendanceCollection = database.collection('sevenSociology');
         const contactUsCollection = database.collection('review');
         const resultSubmitCollection = database.collection('result');
 
@@ -182,6 +183,8 @@ async function run() {
         //     // console.log(result);
         //     res.json(result)
         // });
+
+
         app.get('/classSevenStudent', async (req, res) => {       
             const cursor = await classSevenStudentCollection.find({}).toArray();
             res.json(cursor);
@@ -206,6 +209,14 @@ async function run() {
             const store = await sevenScienceAttendanceCollection.insertMany(data);
             res.json(store);
         });
+        app.post('/sociologySevenAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await sevenSociologyAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+
+
+
         app.post('/contactUs', async(req,res) => {
             const data = req.body;
             const store = await contactUsCollection.insertOne(data);
