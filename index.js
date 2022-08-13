@@ -50,12 +50,17 @@ async function run() {
         const database = client.db('school');
         const usersCollection = database.collection('users');
         // const studentInfoCollection = database.collection('studentInfo');
+
         const classSevenStudentCollection = database.collection('classSevenStudent');
         const sevenBanglaAttendanceCollection = database.collection('sevenBangla');
         const sevenEnglishAttendanceCollection = database.collection('sevenEnglish');
         const sevenMathAttendanceCollection = database.collection('sevenMath');
         const sevenScienceAttendanceCollection = database.collection('sevenScience');
         const sevenSociologyAttendanceCollection = database.collection('sevenSociology');
+
+        const classEightStudentCollection = database.collection('classEightStudent');
+
+
         const contactUsCollection = database.collection('review');
         const resultSubmitCollection = database.collection('result');
 
@@ -185,6 +190,19 @@ async function run() {
         // });
 
 
+        app.post('/classSevenStudent', async (req, res) => {
+            let {email}=req.body;
+            const student = await classSevenStudentCollection.find({email}).toArray();      
+            if(student.length>0){
+                res.json({status:0, message:'student already exit'})
+                return
+            }
+            const studentSubmit = req.body;
+            const result = await classSevenStudentCollection.insertOne({...studentSubmit, email:studentSubmit.email.toLowerCase()});
+            console.log(result);
+            res.json(result)
+        });
+
         app.get('/classSevenStudent', async (req, res) => {       
             const cursor = await classSevenStudentCollection.find({}).toArray();
             res.json(cursor);
@@ -217,6 +235,24 @@ async function run() {
 
 
 
+        app.post('/classEightStudent', async (req, res) => {
+            let {email}=req.body;
+            const student = await classEightStudentCollection.find({email}).toArray();      
+            if(student.length>0){
+                res.json({status:0, message:'student already exit'})
+                return
+            }
+            const studentSubmit = req.body;
+            const result = await classEightStudentCollection.insertOne({...studentSubmit, email:studentSubmit.email.toLowerCase()});
+            console.log(result);
+            res.json(result)
+        });
+
+
+
+
+
+
         app.post('/contactUs', async(req,res) => {
             const data = req.body;
             const store = await contactUsCollection.insertOne(data);
@@ -227,6 +263,14 @@ async function run() {
             const store = await resultSubmitCollection.insertOne(data);
             res.json(store);
         });
+
+        app.get('/result/:studentId', async(req,res) => {
+            const studentId = req.params.studentId;
+            const query = { studentId: studentId };
+            console.log(query); 
+            const store = await resultSubmitCollection.findOne(query);
+            res.json(store) 
+        }); 
         // app.get('/result', async(req,res) => {
         //     // const studentId = req.query.studentId;
         //     const store = await resultSubmitCollection.find({}).toArray();
@@ -243,30 +287,13 @@ async function run() {
     //         res.json(result);         
     //    });
 
-        app.get('/result/:studentId', async(req,res) => {
-            const studentId = req.params.studentId;
-            const query = { studentId: studentId };
-            console.log(query); 
-            const store = await resultSubmitCollection.findOne(query);
-            res.json(store) 
-        }); 
+        
         // app.get('/banglaAttendance', async(req,res) => {
         //     const store = await attendanceCollection.find({});
         //     res.json(store) 
         // });
         
-        app.post('/classSevenStudent', async (req, res) => {
-            let {email}=req.body;
-            const student = await classSevenStudentCollection.find({email}).toArray();      
-            if(student.length>0){
-                res.json({status:0, message:'student already exit'})
-                return
-            }
-            const studentSubmit = req.body;
-            const result = await classSevenStudentCollection.insertOne({...studentSubmit, email:studentSubmit.email.toLowerCase()});
-            console.log(result);
-            res.json(result)
-        });
+       
         /*  const courseCollection = database.collection('cource');
          app.post('/appointments', async (req, res) => {
  
