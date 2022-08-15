@@ -52,6 +52,11 @@ async function run() {
         // const studentInfoCollection = database.collection('studentInfo');
 
         const classSixStudentCollection = database.collection('classSixStudent');
+        const sixBanglaAttendanceCollection = database.collection('sixBangla');
+        const sixEnglishAttendanceCollection = database.collection('sixEnglish');
+        const sixMathAttendanceCollection = database.collection('sixMath');
+        const sixScienceAttendanceCollection = database.collection('sixScience');
+        const sixSociologyAttendanceCollection = database.collection('sixSociology');
 
         const classSevenStudentCollection = database.collection('classSevenStudent');
         const sevenBanglaAttendanceCollection = database.collection('sevenBangla');
@@ -68,8 +73,18 @@ async function run() {
         const eightSociologyAttendanceCollection = database.collection('eightSociology');
 
         const classNineStudentCollection = database.collection('classNineStudent');
+        const nineBanglaAttendanceCollection = database.collection('nineBangla');
+        const nineEnglishAttendanceCollection = database.collection('nineEnglish');
+        const nineMathAttendanceCollection = database.collection('nineMath');
+        const nineScienceAttendanceCollection = database.collection('nineScience');
+        const nineSociologyAttendanceCollection = database.collection('nineSociology');
 
         const classTenStudentCollection = database.collection('classTenStudent');
+        const tenBanglaAttendanceCollection = database.collection('tenBangla');
+        const tenEnglishAttendanceCollection = database.collection('tenEnglish');
+        const tenMathAttendanceCollection = database.collection('tenMath');
+        const tenScienceAttendanceCollection = database.collection('tenScience');
+        const tenSociologyAttendanceCollection = database.collection('tenSociology');
 
 
         const contactUsCollection = database.collection('review');
@@ -213,6 +228,35 @@ async function run() {
             res.json(result)
         });
 
+        app.get('/classSixStudent', async (req, res) => {       
+            const cursor = await classSixStudentCollection.find({}).toArray();
+            res.json(cursor);
+        })
+        app.post('/banglaSixAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await sixBanglaAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/englishSixAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await sixEnglishAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/mathSixAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await sixMathAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/scienceSixAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await sixScienceAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/sociologySixAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await sixSociologyAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
 
 
 
@@ -319,6 +363,39 @@ async function run() {
             console.log(result);
             res.json(result)
         });
+        app.get('/classNineStudent', async (req, res) => {       
+            const cursor = await classNineStudentCollection.find({}).toArray();
+            res.json(cursor);
+        })
+        app.post('/banglaNineAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await nineBanglaAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/englishNineAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await nineEnglishAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/mathNineAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await nineMathAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/scienceNineAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await nineScienceAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/sociologyNineAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await nineSociologyAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+
+
+
+
 
         app.post('/classTenStudent', async (req, res) => {
             let {email}=req.body;
@@ -331,6 +408,35 @@ async function run() {
             const result = await classTenStudentCollection.insertOne({...studentSubmit, email:studentSubmit.email.toLowerCase()});
             console.log(result);
             res.json(result)
+        });
+        app.get('/classTenStudent', async (req, res) => {       
+            const cursor = await classTenStudentCollection.find({}).toArray();
+            res.json(cursor);
+        })
+        app.post('/banglaTenAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await tenBanglaAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/englishTenAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await tenEnglishAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/mathTenAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await tenMathAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/scienceTenAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await tenScienceAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/sociologyTenAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await tenSociologyAttendanceCollection.insertMany(data);
+            res.json(store);
         });
 
 
