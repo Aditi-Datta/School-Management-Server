@@ -62,7 +62,10 @@ async function run() {
 
         const classEightStudentCollection = database.collection('classEightStudent');
         const eightBanglaAttendanceCollection = database.collection('eightBangla');
-
+        const eightEnglishAttendanceCollection = database.collection('eightEnglish');
+        const eightMathAttendanceCollection = database.collection('eightMath');
+        const eightScienceAttendanceCollection = database.collection('eightScience');
+        const eightSociologyAttendanceCollection = database.collection('eightSociology');
 
         const classNineStudentCollection = database.collection('classNineStudent');
 
@@ -277,6 +280,26 @@ async function run() {
         app.post('/banglaEightAttendance', async(req,res) => {
             const data = req.body;
             const store = await eightBanglaAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/englishEightAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await eightEnglishAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/mathEightAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await eightMathAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/scienceEightAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await eightScienceAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/sociologyEightAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await eightSociologyAttendanceCollection.insertMany(data);
             res.json(store);
         });
 
