@@ -65,6 +65,7 @@ async function run() {
         const sevenMathAttendanceCollection = database.collection('sevenMath');
         const sevenScienceAttendanceCollection = database.collection('sevenScience');
         const sevenSociologyAttendanceCollection = database.collection('sevenSociology');
+        const sevenICTAttendanceCollection = database.collection('sevenICT');
 
         const classEightStudentCollection = database.collection('classEightStudent');
         const eightBanglaAttendanceCollection = database.collection('eightBangla');
@@ -72,6 +73,7 @@ async function run() {
         const eightMathAttendanceCollection = database.collection('eightMath');
         const eightScienceAttendanceCollection = database.collection('eightScience');
         const eightSociologyAttendanceCollection = database.collection('eightSociology');
+        const eightICTAttendanceCollection = database.collection('eightICT');
 
         const classNineStudentCollection = database.collection('classNineStudent');
         const nineBanglaAttendanceCollection = database.collection('nineBangla');
@@ -79,6 +81,7 @@ async function run() {
         const nineMathAttendanceCollection = database.collection('nineMath');
         const nineScienceAttendanceCollection = database.collection('nineScience');
         const nineSociologyAttendanceCollection = database.collection('nineSociology');
+        const nineICTAttendanceCollection = database.collection('nineICT');
 
         const classTenStudentCollection = database.collection('classTenStudent');
         const tenBanglaAttendanceCollection = database.collection('tenBangla');
@@ -86,6 +89,7 @@ async function run() {
         const tenMathAttendanceCollection = database.collection('tenMath');
         const tenScienceAttendanceCollection = database.collection('tenScience');
         const tenSociologyAttendanceCollection = database.collection('tenSociology');
+        const tenICTAttendanceCollection = database.collection('tenICT');
 
 
         const contactUsCollection = database.collection('review');
@@ -307,6 +311,11 @@ async function run() {
             const store = await sevenSociologyAttendanceCollection.insertMany(data);
             res.json(store);
         });
+        app.post('/ictSevenAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await sevenICTAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
 
 
 
@@ -349,6 +358,11 @@ async function run() {
         app.post('/sociologyEightAttendance', async(req,res) => {
             const data = req.body;
             const store = await eightSociologyAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/ictEightAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await eightICTAttendanceCollection.insertMany(data);
             res.json(store);
         });
 
@@ -397,6 +411,11 @@ async function run() {
             const store = await nineSociologyAttendanceCollection.insertMany(data);
             res.json(store);
         });
+        app.post('/ictNineAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await nineICTAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
 
 
 
@@ -441,6 +460,11 @@ async function run() {
         app.post('/sociologyTenAttendance', async(req,res) => {
             const data = req.body;
             const store = await tenSociologyAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/ictTenAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await tenICTAttendanceCollection.insertMany(data);
             res.json(store);
         });
 
