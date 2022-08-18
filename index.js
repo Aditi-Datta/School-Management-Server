@@ -57,6 +57,7 @@ async function run() {
         const sixMathAttendanceCollection = database.collection('sixMath');
         const sixScienceAttendanceCollection = database.collection('sixScience');
         const sixSociologyAttendanceCollection = database.collection('sixSociology');
+        const sixICTAttendanceCollection = database.collection('sixICT');
 
         const classSevenStudentCollection = database.collection('classSevenStudent');
         const sevenBanglaAttendanceCollection = database.collection('sevenBangla');
@@ -254,6 +255,11 @@ async function run() {
         app.post('/sociologySixAttendance', async(req,res) => {
             const data = req.body;
             const store = await sixSociologyAttendanceCollection.insertMany(data);
+            res.json(store);
+        });
+        app.post('/ictSixAttendance', async(req,res) => {
+            const data = req.body;
+            const store = await sixICTAttendanceCollection.insertMany(data);
             res.json(store);
         });
 
