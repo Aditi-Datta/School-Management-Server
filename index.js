@@ -134,6 +134,14 @@ async function run() {
              const result = await usersCollection.updateOne(filter, updateDoc);
              res.json(result);         
         });
+
+
+        app.delete('/users/:email',verifyToken, async (req, res) => {
+            const email = req.params.email;
+            const filter = {email: email};
+            const result = await usersCollection.deleteOne(filter);
+            res.json(result); 
+        });  
         // app.put('/users/admin', verifyToken, async (req, res) => {
         //     const user = req.body;
         //     const requester = req.decodedEmail;
