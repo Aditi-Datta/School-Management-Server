@@ -135,7 +135,6 @@ async function run() {
              res.json(result);         
         });
 
-
         app.delete('/users/:email',verifyToken, async (req, res) => {
             const email = req.params.email;
             const filter = {email: email};
